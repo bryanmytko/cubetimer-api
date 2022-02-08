@@ -3,12 +3,13 @@ import cors from 'cors';
 import pino from 'pino';
 import mongoose, { ConnectOptions } from 'mongoose';
 
+import config from './config';
 import authRoute from './routes/auth';
 
 const app = express();
 
 const PORT = 3000;
-const MONGO_URL = 'mongodb://localhost/cubetimer';
+const MONGO_URL = config.MONGO_URL;
 
 const logger = pino({
   level: 'info'
