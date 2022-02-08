@@ -8,6 +8,8 @@
 /node_modules
 /build
 
+.env
+
 # OS
 
 .DS_Store
