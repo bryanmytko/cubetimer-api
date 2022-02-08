@@ -1,0 +1,13 @@
+# Ignore vim swaps
+
+*.swp
+*.swo
+
+# Node stuff
+
+/node_modules
+
+# OS
+
+.DS_Store
+
