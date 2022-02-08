@@ -6,6 +6,7 @@
 # Node stuff
 
 /node_modules
+/build
 
 # OS
 
