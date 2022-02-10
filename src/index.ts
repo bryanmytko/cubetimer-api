@@ -5,6 +5,7 @@ import mongoose, { ConnectOptions } from 'mongoose';
 
 import config from './config';
 import authRoute from './routes/auth';
+import averagesRoute from './routes/averages';
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use(express.json());
 app.use(cors({ origin: '*' }));
 
 app.use('/api/auth', authRoute);
-// app.use('/api/sessions', sessionsRoute);
+app.use('/api/averages', averagesRoute);
 
 db.once('open', () => logger.info('Database connected.'));
 db.on('error', (error: Error) => logger.info(`Database error: ${error}`));

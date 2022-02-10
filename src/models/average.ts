@@ -17,7 +17,8 @@ interface Average {
   slowest: number,
   calculated: number,
   solves: Types.Array<string>,
-  puzzleType: PuzzleType
+  puzzleType: PuzzleType,
+  user: Types.ObjectId
 }
 
 const schema = new Schema<Average>({
@@ -45,6 +46,10 @@ const schema = new Schema<Average>({
     type: String,
     default: PuzzleType.Cube3x3,
     enum: Object.values(PuzzleType)
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 
