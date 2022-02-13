@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 
 import config from '../config';
 import User from '../models/user';
+import verify from '../middleware/verify';
 
 const router = express.Router();
 const ROUNDS = 10;
@@ -20,8 +21,7 @@ router.post('/signup', async (req, res) => {
     const user = await newUser.save();
     res.status(201).json({ token: generateToken(user.toObject()) });
   } catch(err: any) {
-    /* @TODO stop exposing db internals */
-    res.status(400).json({ error: `${err.name}: ${err.message}` });
+    res.status(400).json({ error: 'Error creating user.' });
   }
 });
 
@@ -41,14 +41,14 @@ router.post('/login', async (req, res) => {
 });
 
 /* @TODO need some kind of jwt verification middleware */
-router.get('verify-jwt', (req, res) => {
+router.get('verify-jwt', verify, (req, res) => {
   res.status(200);
 });
 
 const generateToken = (user: User) => {
   const { password, ...data } = user;
 
-  return jwt.sign({ data }, config.SECRET_TOKEN, { expiresIn: '24h' });
+  return jwt.sign({ data }, config.TOKEN_SECRET, { expiresIn: '24h' });
 }
 
 export default router;
