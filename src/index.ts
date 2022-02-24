@@ -34,5 +34,5 @@ db.once('open', () => logger.info('Database connected.'));
 db.on('error', (error: Error) => logger.info(`Database error: ${error}`));
 
 app.listen(PORT, () => {
-  logger.info(`iServer started on port ${PORT}`);
+  logger.info(`Server started on port ${PORT}`);
 });
