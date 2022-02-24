@@ -5,7 +5,7 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 const getConfig = (): ENV => ({
   MONGO_URL: process.env.MONGO_URL,
-  SECRET_TOKEN: process.env.SECRET_TOKEN
+  TOKEN_SECRET: process.env.TOKEN_SECRET
 });
 
 const getSanitizedConfig = (rawConfig: ENV): Config => {
